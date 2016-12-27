@@ -20,5 +20,6 @@ out/
 gen/
 
 
+target/
 build/
 build.properties
