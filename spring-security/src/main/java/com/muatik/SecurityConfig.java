@@ -40,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/users/"
                 )
                 .permitAll()
-                .antMatchers("/verySecured/").hasAuthority("ADMIN")
-                .antMatchers("/api/users/").hasAuthority("EDITOR")
+                .antMatchers("/verySecured/").hasRole("ADMIN")
+                .antMatchers("/api/users/").hasRole("EDITOR")
                 .anyRequest()
                 .fullyAuthenticated()
                 .and().httpBasic()
@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     throw new UsernameNotFoundException("user not found");
                 }
 
-                GrantedAuthority authority = new SimpleGrantedAuthority("EDITOR");
+                GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_EDITOR");
                 return new User(
                         user.getEmail(),
                         user.getHashedPassword(),
