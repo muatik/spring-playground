@@ -61,8 +61,8 @@ public class BookControllerTest {
 
     @Test
     public void get() {
-        when()
-                .get(ENDPOINT).
+        when().
+                get(ENDPOINT).
                 then().
                 contentType(ContentType.JSON).
                 body("size()", equalTo(books.size()));
