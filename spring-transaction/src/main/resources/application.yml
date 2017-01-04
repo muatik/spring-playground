@@ -9,3 +9,6 @@ spring:
     show-sql: true
 user:
   timezone: UTC
+
+logging:
+  level: debug
