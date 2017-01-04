@@ -3,6 +3,7 @@ package com.muatik.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 /**
  * Created by mustafaatik on 04/01/17.
@@ -15,6 +16,9 @@ public class PollOption {
     private long id;
 
     private long votes;
+//
+//    @Version
+//    private long version;
 
     public long getVotes() {
         return votes;

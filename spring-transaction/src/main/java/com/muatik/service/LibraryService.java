@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+
 /**
  * Created by mustafaatik on 03/01/17.
  */
@@ -70,6 +71,7 @@ public class LibraryService {
 
         option.increase();
         pollRepository.save(option);
+
         logger.info(tag + " - final poll vote value: " + option.getVotes());
     }
 
@@ -79,7 +81,7 @@ public class LibraryService {
      * be interleaved from another thread/invocation. So, it is possible to end up with
      * the same value after all. As you can see, @Transactional does not have any
      * intention or ability to prevent this kind of race-condition.
-     * <p>
+     *
      * Example: vote("1.voter", 3000); vote("2.voter", 1000);
      * Output:
      * 2017-01-04 12:06:51.138 : 1.voter - starts voting. Thread id: 34, 18
@@ -104,7 +106,7 @@ public class LibraryService {
      * be interleaved from another thread/invocation. So, it is possible to end up with
      * the same value after all. As you can see, @Transactional does not have any
      * intention or ability to prevent this kind of race-condition.
-     * <p>
+     *
      * Example: vote2("1.voter", 3000); vote2("2.voter", 1000);
      * Output:
      * 2017-01-04 12:13:25.450 : 1.voter - starts voting. Thread id: 27, 13
@@ -132,7 +134,7 @@ public class LibraryService {
      * be interleaved from another thread/invocation. So, it is possible to end up with
      * the same value after all. As you can see, @Transactional does not have any
      * intention or ability to prevent this kind of race-condition.
-     * <p>
+     *
      * Example: vote3("1.voter", 3000); vote3("2.voter", 1000);
      * Output:
      * 2017-01-04 12:16:08.085 : 1.voter - starts voting. Thread id: 27, 13
