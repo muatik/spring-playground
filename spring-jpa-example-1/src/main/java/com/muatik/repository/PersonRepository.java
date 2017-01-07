@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long>{
     Iterable<Person> findAllByHeight(float height);
+    Iterable<Person> findAllByOrderByHeightDesc();
 }

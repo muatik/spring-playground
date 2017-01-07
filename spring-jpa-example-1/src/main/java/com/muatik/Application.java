@@ -31,25 +31,29 @@ public class Application {
     @Bean
     public CommandLineRunner populateDB(PersonRepository repository) {
         return (args) -> {
-            repository.save(new Person(75, "mustafa"));
-            repository.save(new Person(74, "john"));
-            repository.save(new Person(71, "jane"));
-            repository.save(new Person(73, "neval"));
-            repository.save(new Person(69, "micheal"));
-            repository.save(new Person(81, "mateo"));
+            repository.save(new Person(75, "mustafa", "atik"));
+            repository.save(new Person(74, "john", "smith"));
+            repository.save(new Person(71, "jane", "cate"));
+            repository.save(new Person(73, "neval", "uysal"));
+            repository.save(new Person(75, "micheal", "bourbone"));
+            repository.save(new Person(81, "mateo", "senza"));
 
             logger.info("");
             logger.info("Count: " + repository.count());
 
             repository.findAllByHeight(71).forEach(each -> {
-                logger.info(each.getName() + ", whose height is 71");
+                logger.info(each.getFirstname() + ", whose height is 71");
             });
 
             logger.info("== second page with page size 4 ==");
             personPagingAndSortingRepository.findAll(new PageRequest(1, 4)).forEach(each -> {
-                logger.info(each.getName());
+                logger.info(each.getFirstname());
             });
 
+            logger.info("== order by height descending ==");
+            repository.findAllByOrderByHeightDesc().forEach(each ->{
+                logger.info(each.getLastname());
+            });
         };
     }
 }

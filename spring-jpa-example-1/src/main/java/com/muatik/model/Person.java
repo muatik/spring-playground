@@ -16,15 +16,17 @@ public class Person implements Serializable {
     @GeneratedValue
     private long id;
 
-    private String name;
+    private String firstname;
+    private String lastname;
 
     private float height;
 
     protected Person() {}
 
-    public Person(float length, String name) {
+    public Person(float length, String name, String lastname) {
         this.height = length;
-        this.name = name;
+        this.firstname = name;
+        this.lastname = lastname;
     }
 
     public long getId() {
@@ -35,12 +37,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public float getHeight() {
@@ -49,5 +51,13 @@ public class Person implements Serializable {
 
     public void setHeight(float height) {
         this.height = height;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }
