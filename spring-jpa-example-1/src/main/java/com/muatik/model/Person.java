@@ -1,9 +1,12 @@
 package com.muatik.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by muatik on 1/7/17.
@@ -21,12 +24,16 @@ public class Person implements Serializable {
 
     private float height;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Address address;
+
     protected Person() {}
 
-    public Person(float length, String name, String lastname) {
+    public Person(float length, String name, String lastname, Address address) {
         this.height = length;
         this.firstname = name;
         this.lastname = lastname;
+        this.address = address;
     }
 
     public long getId() {
@@ -59,5 +66,18 @@ public class Person implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " - " + getFirstname() + " from " + getAddress().getCity();
     }
 }
