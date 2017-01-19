@@ -26,6 +26,7 @@ public class ConfigBinder {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }

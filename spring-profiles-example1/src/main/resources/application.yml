@@ -1,0 +1,23 @@
+# DEFAULT PROFILE, AND PRODUCTION
+my:
+  name: default_name
+  url: default_url
+
+
+--- # DEVELOPMENT PROFILE
+
+
+spring:
+  profiles: dev
+my:
+  name: dev_name
+
+
+
+--- # TEST PROFILE
+
+
+spring:
+  profiles: test
+my:
+  url: test_url
