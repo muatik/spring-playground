@@ -18,6 +18,12 @@ public class MyEntity implements Serializable {
 
     private String name;
 
+    protected MyEntity() {}
+
+    public MyEntity(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
