@@ -17,7 +17,6 @@ import java.util.Optional;
 @Service
 public class MyEntityService {
 
-
     private Logger logger = Logger.getLogger(this.getClass());
 
     private MyEntityRepository repository;
