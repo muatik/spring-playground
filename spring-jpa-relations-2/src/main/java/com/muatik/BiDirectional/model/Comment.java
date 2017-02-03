@@ -1,8 +1,10 @@
 package com.muatik.BiDirectional.model;
 
+import org.hibernate.ObjectDeletedException;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Created by mustafaatik on 01/02/2017.
@@ -70,5 +72,10 @@ public class Comment {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, post, text);
     }
 }
