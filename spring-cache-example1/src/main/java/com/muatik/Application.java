@@ -49,7 +49,7 @@ public class Application {
 
 
 
-            logger.warn("entity name is getting deleted");
+            logger.warn("entity is getting deleted");
             service.delete(e1.getId()); // cache will be evicted
             logger.warn("entity name is deleted. trying to find it");
             assertEquals(false, service.findOne(e1.getId()).isPresent()); // expected to be not present, cause sql statement
@@ -64,7 +64,7 @@ public class Application {
                     e1.getName(), service.findOne(e1.getId()).get().getName());// will come from cache
 
             assertEquals(
-                    e1.getName(), service.findOneInDatabase(e1.getId()).get().getName());// will come from cache
+                    e1.getName(), service.findOneInDatabase(e1.getId()).get().getName());// will come from database
 
         };
     }

@@ -1,0 +1,58 @@
+<configuration>
+
+    <!--<appender name="SOCKET" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+        <!--<destination>192.168.34.84:4560</destination>-->
+        <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder" />-->
+    <!--</appender>-->
+
+    <!-- directly writes to a file on the filesystem -->
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>log.txt</file>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Graylog2 appender-->
+    <appender name="gelf" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        <host>udp:localhost</host>
+        <port>12201</port>
+        <!--<version>1.1</version>-->
+        <!--<facility>java-test</facility>-->
+        <!--<extractStackTrace>true</extractStackTrace>-->
+        <!--<filterStackTrace>true</filterStackTrace>-->
+        <!--<mdcProfiling>true</mdcProfiling>-->
+        <!--<timestampPattern>yyyy-MM-dd HH:mm:ss,SSSS</timestampPattern>-->
+        <!--<maximumMessageSize>2097152</maximumMessageSize>-->
+
+        <!--&lt;!&ndash; This are static fields &ndash;&gt;-->
+        <!--<additionalFields>fieldName1=fieldValue1,fieldName2=fieldValue2</additionalFields>-->
+        <!--&lt;!&ndash; Optional: Specify field types &ndash;&gt;-->
+        <!--<additionalFieldTypes>fieldName1=String,fieldName2=Double,fieldName3=Long</additionalFieldTypes>-->
+
+        <!-- This are fields using MDC -->
+        <!--<mdcFields>mdcField1,mdcField2</mdcFields>-->
+        <!--<dynamicMdcFields>mdc.*,(mdc|MDC)fields</dynamicMdcFields>-->
+        <!--<includeFullMdc>true</includeFullMdc>-->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>INFO</level>-->
+        <!--</filter>-->
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="gelf" />
+        <appender-ref ref="file" />
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
+
+

@@ -1,0 +1,7 @@
+server:
+  port: 8080
+zuul:
+  routes:
+    foos:
+      path: /api/songs/**
+      url: http://localhost:8081/songs/
